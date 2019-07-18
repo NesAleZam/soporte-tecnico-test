@@ -39,9 +39,16 @@ Ejemplo: El item `56` estuvo en el estado `shipping_pending` en la fecha `2019-0
 ### Contesta a lo siguiente:
 
 1. Utilizando una sola query: Alguién quiere saber cuales son los `sku` de la orden con `order_number` igual a `19857758784` que se encuentran en el `status` actual de `shipping_pending`.
+select Order.order_number,OrderItem.sku,MachineItem.status
+from order
+Inner Join OrderItem, MachineItem
+On Order.order_number=OrderItem.sku And Order.order_number= MachineItem.statud;
+Where order_number=19857758784 Ando status=shipping_pending
 
 2. Utilizando 2 queries: Alguién quiere pasar los items que se encuentran actualmente en el estado `shipping_pending` de la  `order_number` igual a `19857758784` al status `shipping_approved`.
+Update MachineItem ser status=shipping_approved
+Where status=shipping_pending  ADN order_number=19857758784
 
-*IMPORTANTE: En ambos casos no sabes los valores para item_id o order_id solo que el `order_number` de la orden es igual a `19857758784`
+IMPORTANTE: En ambos casos no sabes los valores para item_id o order_id solo que el `order_number` de la orden es igual a `19857758784`
 
 
